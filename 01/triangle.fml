@@ -1,0 +1,31 @@
+/* Prints n times ' ' if is_space is true else n times '*'.  
+
+   It would be nice to have actual character instead of boolean is_space.
+   That's not possible in FML though.
+*/ 
+function print_char(n, is_space) -> begin
+  while n > 0 do begin
+    if is_space
+    then print(" ")
+    else print("*");
+    n <- n - 1;
+  end;
+end;
+
+function triangle(height) -> begin
+  if height < 1 then begin
+    print("Expected positive number!")
+  end
+  else begin
+    let i = 1;
+    while i <= height do begin 
+      print_char(height - i, true);
+      print_char(2 * i - 1, false);
+      print("\n");
+      i <- i + 1;
+    end;
+  end;
+end;
+
+let height = 10;
+triangle(height);
