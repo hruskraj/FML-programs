@@ -10,8 +10,36 @@ function fib_rec(n) -> begin
     fib_rec(n - 1) + fib_rec(n - 2);
 end;
 
+function fib_iter(n) -> begin
+  if n < 2 then begin
+    if n < 0 then
+      print("Expected positive number!\n")
+    else begin
+      if n == 0 then 0 else 1;
+    end;
+  end
+  else begin
+    let a = 0;
+    let b = 1;
+    let i = 2;
+    while i <= n do begin
+      let sum = a + b;
+      a <- b;
+      b <- sum;
+      i <- i + 1;
+    end;
+    b;
+  end;
+end;
+
 let n = 0;
-while n <= 30 do begin
+while n <= 25 do begin
   print("~ - ~\n", n, fib_rec(n));
+  n <- n + 1;
+end;
+
+n <- 0;
+while n <= 46 do begin
+  print("~ - ~\n", n, fib_iter(n));
   n <- n + 1;
 end;
