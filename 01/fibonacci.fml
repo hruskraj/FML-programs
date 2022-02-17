@@ -1,0 +1,17 @@
+function fib_rec(n) -> begin
+  if n < 2 then begin
+    if n < 0 then
+      print("Expected positive number!\n")
+    else begin
+      if n == 0 then 0 else 1;
+    end;
+  end
+  else
+    fib_rec(n - 1) + fib_rec(n - 2);
+end;
+
+let n = 0;
+while n <= 30 do begin
+  print("~ - ~\n", n, fib_rec(n));
+  n <- n + 1;
+end;
