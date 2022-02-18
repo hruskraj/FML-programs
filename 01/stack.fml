@@ -1,0 +1,71 @@
+function stack(size) -> begin
+  object
+  begin
+    let max_size = size;
+    let index = -1;
+    let a = array(size, null);
+
+    function is_empty() -> begin
+      this.index < 0;
+    end;
+
+    function is_full() -> begin
+      this.index == this.max_size - 1;
+    end;
+
+    function pop() -> begin
+      if this.is_empty() then begin
+        print("Invalid operation! Stack is empty.\n");
+      end
+      else begin
+        // the following print shouldn't really be there, it's just for demonstrative purposes
+        print("popped ~\n", this.a[this.index]);
+        this.index <- this.index - 1
+      end;
+    end;
+
+    function push(x) -> begin
+      if this.is_full() then begin
+        print("Invalid operation! Stack is full.\n");
+      end
+      else begin
+        // the following print shouldn't really be there, it's just for demonstrative purposes
+        print("pushed ~\n", x);
+        this.a[this.index + 1] <- x;
+        this.index <- this.index + 1;
+      end;
+    end;
+
+    function peek() -> begin
+      if this.is_empty() then begin
+        print("Stack is empty.\n");
+      end
+      else begin
+        this.a[this.index];
+      end;
+    end;
+
+  end;
+end;
+
+let stack = stack(3);
+stack.pop();
+stack.peek();
+stack.push(3);
+print("~\n", stack.peek());
+stack.pop();
+stack.push(1);
+print("~\n", stack.peek());
+print("~\n", stack.peek());
+stack.push(2);
+print("~\n", stack.peek());
+stack.push(3);
+print("~\n", stack.peek());
+stack.push(4);
+print("~\n", stack.peek());
+stack.pop();
+print("~\n", stack.peek());
+stack.pop();
+print("~\n", stack.peek());
+stack.pop();
+print("~\n", stack.peek());
